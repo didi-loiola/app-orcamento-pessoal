@@ -51,8 +51,13 @@ function cadastrarDespesa() {
     let despesa = new Despesa(ano.value, mes.value, dia.value, tipo.value, descricao.value, valor.value)
     if (despesa.validarDados()) {
         bd.gravar(despesa)
-        $('#sucessoGravacao').modal('show')
+        $('#modalRegistraDespesa').modal('show')
     } else {
-        $('#erroGravacao').modal('show')
+        document.getElementById('voltar').classList.add('btn-danger')
+        document.getElementById('voltar').textContent = 'Voltar e Corrigir'
+        document.getElementById('sucesso').classList.add('text-danger')
+        document.getElementById('staticBackdropLabel').textContent = 'Erro na Gravação!'
+        document.getElementsByClassName('modal-body')[0].innerText = 'Existem campos obrigatórios que não foram preenchidos'
+        $('#modalRegistraDespesa').modal('show')
     }
 }

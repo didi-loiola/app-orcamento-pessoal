@@ -108,29 +108,10 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="erroGravacao" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="modalRegistraDespesa" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header text-danger">
-                    <h5 class="modal-title" id="staticBackdropLabel">Erro na gravação</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Existem campos obrigatórios que estão vazios.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Voltar e corrigir</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="sucessoGravacao" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header text-success">
+                <div id="sucesso" class="modal-header text-success">
                     <h5 class="modal-title" id="staticBackdropLabel">Registro inserido com sucesso</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -138,7 +119,7 @@
                     Despesa cadastrada com sucesso!
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Voltar</button>
+                    <button id="voltar" type="button" class="btn btn-success" data-bs-dismiss="modal">Voltar</button>
                 </div>
             </div>
         </div>
