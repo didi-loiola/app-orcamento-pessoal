@@ -36,6 +36,19 @@ class BD {
 
         localStorage.setItem('id', id)
     }
+
+    recuperarTodosRegistros() {
+        let despesas = Array()
+        let id = localStorage.getItem('id')
+        for (let i = 1; i <= id; i++) {
+            let despesa = JSON.parse(localStorage.getItem(i))
+            if (despesa !== null) {
+                despesas.push(despesa)
+            }
+        }
+
+        return despesas
+    }
 }
 
 let bd = new BD()
@@ -60,4 +73,11 @@ function cadastrarDespesa() {
         document.getElementsByClassName('modal-body')[0].innerText = 'Existem campos obrigatórios que não foram preenchidos'
         $('#modalRegistraDespesa').modal('show')
     }
+}
+
+function carregaListaDespesas() {
+    let despesas = Array()
+    despesas = bd.recuperarTodosRegistros()
+
+    console.log(despesas)
 }
