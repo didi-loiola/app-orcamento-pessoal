@@ -64,6 +64,7 @@ function cadastrarDespesa() {
     let despesa = new Despesa(ano.value, mes.value, dia.value, tipo.value, descricao.value, valor.value)
     if (despesa.validarDados()) {
         bd.gravar(despesa)
+        limpaCampos(ano, mes, dia, tipo, descricao, valor)
         $('#modalRegistraDespesa').modal('show')
     } else {
         document.getElementById('voltar').classList.add('btn-danger')
@@ -104,15 +105,13 @@ function carregaListaDespesas() {
         linha.insertCell(2).innerHTML = d.descricao
         linha.insertCell(3).innerHTML = d.valor
     })
-    console.log(despesas)
 }
 
-
-{
-    /* <tr>
-        <td>15/08/2022</td>
-        <td>Alimentação</td>
-        <td>Compras do Mês</td>
-        <td>445</td>
-    </tr> */
+function limpaCampos(ano, mes, dia, tipo, descricao, valor) {
+    ano.value = ''
+    mes.value = ''
+    dia.value = ''
+    tipo.value = ''
+    descricao.value = ''
+    valor.value = ''
 }
