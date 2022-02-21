@@ -68,7 +68,7 @@ class BD {
             console.log('filtro do dia')
             despesasFiltradas = despesasFiltradas.filter(d => d.dia == despesa.dia)
         }
-        if (despesa.dia) {
+        if (despesa.tipo) {
             console.log('filtro do tipo')
             despesasFiltradas = despesasFiltradas.filter(d => d.tipo == despesa.tipo)
         }
@@ -80,7 +80,7 @@ class BD {
             console.log('filtro do valor')
             despesasFiltradas = despesasFiltradas.filter(d => d.valor == despesa.valor)
         }
-
+        return despesasFiltradas
     }
 }
 
@@ -109,10 +109,13 @@ function cadastrarDespesa() {
     }
 }
 
-function carregaListaDespesas() {
-    let despesas = Array()
+function carregaListaDespesas(despesas = Array(), filtro = false) {
+    if (despesas.length == 0 && filtro == false) {
+        despesas = bd.recuperarTodosRegistros()
+    }
+
     let listaDespesas = document.getElementById('listaDespesas')
-    despesas = bd.recuperarTodosRegistros()
+    listaDespesas.innerHTML = ''
 
     despesas.forEach(function(d) {
         switch (d.tipo) {
@@ -122,13 +125,13 @@ function carregaListaDespesas() {
             case '2':
                 d.tipo = 'Educação'
                 break
-            case '1':
+            case '3':
                 d.tipo = 'Lazer'
                 break
-            case '1':
+            case '4':
                 d.tipo = 'Saúde'
                 break
-            case '1':
+            case '5':
                 d.tipo = 'Transporte'
                 break
         }
@@ -158,5 +161,7 @@ function pesquisarDespesa() {
     let valor = document.getElementById('valor').value
 
     let despesa = new Despesa(ano, mes, dia, tipo, descricao, valor)
-    bd.pesquisar(despesa)
+    let despesas = bd.pesquisar(despesa)
+
+    this.carregaListaDespesas(despesas, true)
 }
